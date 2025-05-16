@@ -1,0 +1,13 @@
+document.getElementById('start').addEventListener('click', async () => {
+    const audioElement = document.getElementById('audio');
+    try {
+        // Solicita acceso al micrófono
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        // Asigna el flujo de audio al elemento de audio
+        audioElement.srcObject = stream;
+        audioElement.play();
+    } catch (error) {
+        console.error('Error al acceder al microfono:', error);
+        alert('No se pudo acceder al microfono. Verifica los permisos del navegador.');
+    }
+});
